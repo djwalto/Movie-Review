@@ -4,7 +4,7 @@ const pool = require('../pool');
 const movieRouter = express.Router();
 
 movieRouter.get('/', (req, res) => {
-  const queryText = 'SELECT * FROM genres';
+  const queryText = 'SELECT * FROM movies';
   pool
     .query(queryText)
     .then((result) => {
