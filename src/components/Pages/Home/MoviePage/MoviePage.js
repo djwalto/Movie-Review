@@ -30,6 +30,10 @@ class MoviePage extends Component {
   goBack = (event) => {
     this.props.history.push('/');
   };
+
+  editMovie = (event) => {
+    this.props.history.push('/edit');
+  };
   render() {
     return (
       <div>
@@ -38,7 +42,7 @@ class MoviePage extends Component {
         <p>{this.state.thisMovie.description}</p>
         <button onClick={this.goBack}>Back To List</button>
 
-        <button>Edit</button>
+        <button onClick={this.editMovie}>Edit</button>
       </div>
     );
   }

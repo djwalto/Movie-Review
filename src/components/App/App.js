@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import Home from '../Pages/Home/Home';
 import MoviePage from '../Pages/Home/MoviePage/MoviePage';
+import EditPage from '../Pages/Home/EditPage/EditPage';
 
 class App extends Component {
   // Renders the entire app on the DOM
@@ -18,6 +19,7 @@ class App extends Component {
         <Router>
           <Route exact path="/" component={Home} />
           <Route path="/details/:id" component={MoviePage} />
+          <Route path="/edit" component={EditPage} />
         </Router>
       </div>
     );
