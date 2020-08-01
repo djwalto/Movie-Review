@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 
 class MoviePage extends Component {
   state = {
-    thisMovie: {},
+    thisMovie: {
+      genres: [],
+    },
   };
   componentDidMount() {
     console.log(this.state.thisMovie);
