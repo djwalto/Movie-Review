@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import MoviesList from '../MoviesList/MoviesList';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import Home from '../Pages/Home/Home';
+import MoviePage from '../Pages/Home/MoviePage/MoviePage';
 
 class App extends Component {
   // Renders the entire app on the DOM
@@ -12,8 +14,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <p>I NEED DATA</p>
-        <MoviesList />
+        <h1>MOVIES</h1>
+        <Router>
+          <Route exact path="/" component={Home} />
+          <Route path="/movie/:id" component={MoviePage} />
+        </Router>
       </div>
     );
   }

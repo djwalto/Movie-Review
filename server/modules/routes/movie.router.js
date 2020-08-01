@@ -16,10 +16,13 @@ movieRouter.get('/', (req, res) => {
     });
 });
 
-movieRouter.get('/details/:id', (req, res) => {
-  const queryText = 'SELECT * FROM movies WHERE id=$1';
+movieRouter.get('/details', (req, res) => {
+  const queryText = `SELECT movies.id, movies.title, movies.description, movies.poster, array_agg(genres.name) as genres FROM movies
+  JOIN movie_type ON movies.id=movie_type.genre_id
+  JOIN genres ON movie_type.genre_id=movies.id
+  GROUP BY movies.id ORDER BY movies.id;`;
   pool
-    .query(queryText, [req.params.id])
+    .query(queryText)
     .then((result) => {
       res.send(result.rows);
     })

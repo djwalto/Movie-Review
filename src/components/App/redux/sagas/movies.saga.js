@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function* getMovies(action) {
   try {
-    const response = yield axios.get('/api/movie');
+    const response = yield axios.get('/api/movie/details');
     yield put({
       type: 'SET_MOVIES',
       payload: response.data,
