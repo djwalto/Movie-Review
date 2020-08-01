@@ -27,12 +27,18 @@ class MoviePage extends Component {
       }
     );
   }
+  goBack = (event) => {
+    this.props.history.push('/');
+  };
   render() {
     return (
       <div>
         <img src={this.state.thisMovie.poster}></img>
         <h1>{this.state.thisMovie.title}</h1>
         <p>{this.state.thisMovie.description}</p>
+        <button onClick={this.goBack}>Back To List</button>
+
+        <button>Edit</button>
       </div>
     );
   }
