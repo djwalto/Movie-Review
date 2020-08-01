@@ -6,7 +6,7 @@ class MoviesList extends Component {
   render() {
     const moviesListArray = this.props.store.movies.map((item, index) => {
       return (
-        <MoviesListItem movies={item} handleClick={this.props.handleClick} />
+        <MoviesListItem movie={item} handleClick={this.props.handleClick} />
       );
     });
 

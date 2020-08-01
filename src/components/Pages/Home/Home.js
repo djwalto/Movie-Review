@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MoviesList from '../../MoviesList/MoviesList';
+import { connect } from 'react-redux';
 
 class Home extends Component {
   handleClick = (id) => (event) => {
@@ -14,4 +15,6 @@ class Home extends Component {
     );
   }
 }
-export default Home;
+const mapStoreToProps = (store) => ({ store });
+
+export default connect(mapStoreToProps)(Home);
