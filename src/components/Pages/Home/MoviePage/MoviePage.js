@@ -30,7 +30,7 @@ class MoviePage extends Component {
   render() {
     return (
       <div>
-        <h1>{this.state.movie}</h1>
+        <h1>THIS MOVIE</h1>
       </div>
     );
   }

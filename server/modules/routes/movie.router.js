@@ -16,11 +16,13 @@ movieRouter.get('/', (req, res) => {
     });
 });
 
-movieRouter.get('/details', (req, res) => {
-  const queryText = `SELECT movies.id, movies.title, movies.description, movies.poster, array_agg(genres.name) as genres FROM movies
-  JOIN movie_type ON movies.id=movie_type.genre_id
-  JOIN genres ON movie_type.genre_id=movies.id
-  GROUP BY movies.id ORDER BY movies.id;`;
+movieRouter.get('/:id', (req, res) => {
+  const queryText = `SELECT movies.id, movies.title, movies.description, movies.poster, array_agg(genres.name) as genres
+  FROM movies
+    JOIN movie_type ON movies.id=movie_type.movie_id
+    JOIN genres ON movie_type.genre_id=genres.id
+  GROUP BY movies.id
+  ORDER BY movies.id;`;
   pool
     .query(queryText)
     .then((result) => {
