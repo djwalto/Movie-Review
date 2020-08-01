@@ -26,6 +26,7 @@ ORDER BY movies.id;`;
   pool
     .query(queryText)
     .then((result) => {
+      console.log(result.rows);
       res.send(result.rows);
     })
     .catch((err) => {

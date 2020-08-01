@@ -17,7 +17,9 @@ class EditPage extends Component {
         <label>Description</label>
         <br></br>
         <textarea id="moviedesc" name="moviedesc" rows="4" cols="50"></textarea>
-        <button onClick={this.cancelEdit(this.props.passedId)}>Cancel</button>
+        <button onClick={this.cancelEdit(this.props.match.params.id)}>
+          Cancel
+        </button>
       </div>
     );
   }
