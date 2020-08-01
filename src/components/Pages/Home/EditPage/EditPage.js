@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class EditPage extends Component {
+  cancelEdit = (id) => (event) => {
+    console.log(id);
+    this.props.history.push(`/details/${id}`);
+  };
   render() {
     return (
       <div>
@@ -13,6 +17,7 @@ class EditPage extends Component {
         <label>Description</label>
         <br></br>
         <textarea id="moviedesc" name="moviedesc" rows="4" cols="50"></textarea>
+        <button onClick={this.cancelEdit(this.props.passedId)}>Cancel</button>
       </div>
     );
   }

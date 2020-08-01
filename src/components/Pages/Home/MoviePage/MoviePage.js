@@ -32,7 +32,7 @@ class MoviePage extends Component {
   };
 
   editMovie = (event) => {
-    this.props.history.push('/edit');
+    this.props.history.push(`/edit/${this.state.thisMovie.id}`);
   };
   render() {
     return (
@@ -42,7 +42,9 @@ class MoviePage extends Component {
         <p>{this.state.thisMovie.description}</p>
         <button onClick={this.goBack}>Back To List</button>
 
-        <button onClick={this.editMovie}>Edit</button>
+        <button onClick={this.editMovie} passedId={this.state.thisMovie.id}>
+          Edit
+        </button>
       </div>
     );
   }
