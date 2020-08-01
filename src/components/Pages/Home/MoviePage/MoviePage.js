@@ -30,7 +30,9 @@ class MoviePage extends Component {
   render() {
     return (
       <div>
-        <h1>THIS MOVIE</h1>
+        <img src={this.state.thisMovie.poster}></img>
+        <h1>{this.state.thisMovie.title}</h1>
+        <p>{this.state.thisMovie.description}</p>
       </div>
     );
   }
