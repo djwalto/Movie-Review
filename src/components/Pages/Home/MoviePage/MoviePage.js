@@ -40,13 +40,9 @@ class MoviePage extends Component {
         <img src={this.state.thisMovie.poster}></img>
         <h1>{this.state.thisMovie.title}</h1>
         <p>{this.state.thisMovie.description}</p>
-        <p>{this.state.thisMovie.genre}</p>
-
         <button onClick={this.goBack}>Back To List</button>
 
-        <button onClick={this.editMovie} passedId={this.state.thisMovie.id}>
-          Edit
-        </button>
+        <button onClick={this.editMovie}>Edit</button>
       </div>
     );
   }
