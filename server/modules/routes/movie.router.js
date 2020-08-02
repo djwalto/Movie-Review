@@ -33,46 +33,29 @@ movieRouter.get('/details/:id', (req, res) => {
     });
 });
 
-// movieRouter.post('/', (req, res) => {
-//   const newMovie = req.body;
-//   const queryText = `INSERT INTO movies ("title", "description")
-//                     VALUES ($1, $2)`;
-//   const queryValues = [newMovie.title, newMovie.description];
-//   pool
-//     .query(queryText, queryValues)
-//     .then(() => {
-//       res.sendStatus(201);
-//     })
-//     .catch((err) => {
-//       console.log('Error completing POST newMovie', err);
-//       res.sendStatus(500);
-//     });
-// });
+movieRouter.put('/edit/:id', (req, res) => {
+  const queryText = `UPDATE "movies"
+    SET "title" = $1, "description" = $2
+    WHERE "id" = $3;`;
+  const movieId = req.params.id;
+  const newMovieData = req.body;
 
-// movieRouter.put('/', (req, res) => {
-//   const updatedMovie = req.body;
-
-//   const queryText = `UPDATE movies
-//   SET "title" = $1,
-//   "description" = $2,
-//   WHERE id=$3;`;
-
-//   const queryValues = [
-//     updatedMovie.title,
-//     updatedMovie.description,
-//     updatedMovie.id,
-//   ];
-
-//   pool
-//     .query(queryText, queryValues)
-//     .then(() => {
-//       res.sendStatus(200);
-//     })
-//     .catch((err) => {
-//       console.log('Error completing PUT movies', err);
-//       res.sendStatus(500);
-//     });
-// });
+  pool
+    .query(queryText, [
+      // how is title coming to server
+      newMovieData.title,
+      // how to get the description
+      newMovieData.description,
+      movieId,
+    ])
+    .then((responseDb) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.warn(err);
+      res.sendStatus(500);
+    });
+});
 
 // movieRouter.delete('/:id', (req, res) => {
 //   const queryText = 'DELETE FROM movies WHERE id=$1';

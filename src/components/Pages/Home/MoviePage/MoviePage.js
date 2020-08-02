@@ -34,7 +34,8 @@ class MoviePage extends Component {
   };
 
   editMovie = (event) => {
-    this.props.history.push(`/edit/${this.state.thisMovie.id}`);
+    console.log(`this.state.thisMovie.id`);
+    console.log(this.props.history.push(`/edit/${this.state.thisMovie.id}`));
   };
   render() {
     return (

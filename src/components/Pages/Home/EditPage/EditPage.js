@@ -2,9 +2,31 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class EditPage extends Component {
+  state = {
+    title: '',
+    description: '',
+  };
+
   cancelEdit = (id) => (event) => {
     console.log(id);
     this.props.history.push(`/details/${id}`);
+  };
+
+  onInputChange = (input) => (event) => {
+    this.setState({
+      [input]: event.target.value,
+    });
+  };
+
+  updateMovie = (event) => {
+    let newMovie = {
+      ...this.state,
+      id: Number(this.props.match.params.id),
+    };
+    this.props.dispatch({
+      type: 'PUT_MOVIE',
+      payload: newMovie,
+    });
   };
   render() {
     return (
@@ -12,13 +34,22 @@ class EditPage extends Component {
         <h1>Add A Movie</h1>
         <label>Title</label>
         <br></br>
-        <input type="text"></input>
+        <input type="text" onChange={this.onInputChange('title')}></input>
         <br></br>
         <label>Description</label>
         <br></br>
-        <textarea id="moviedesc" name="moviedesc" rows="4" cols="50"></textarea>
+        <textarea
+          onChange={this.onInputChange('description')}
+          id="moviedesc"
+          name="moviedesc"
+          rows="4"
+          cols="50"
+        ></textarea>
         <button onClick={this.cancelEdit(this.props.match.params.id)}>
           Cancel
+        </button>
+        <button onClick={this.updateMovie(this.props.match.params.id)}>
+          Save
         </button>
       </div>
     );
