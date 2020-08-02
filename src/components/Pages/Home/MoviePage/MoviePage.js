@@ -34,8 +34,7 @@ class MoviePage extends Component {
   };
 
   editMovie = (event) => {
-    console.log(`this.state.thisMovie.id`);
-    console.log(this.props.history.push(`/edit/${this.state.thisMovie.id}`));
+    this.props.history.push(`/edit/${this.state.thisMovie.id}`);
   };
   render() {
     return (
@@ -43,6 +42,7 @@ class MoviePage extends Component {
         <img src={this.state.thisMovie.poster}></img>
         <h1>{this.state.thisMovie.title}</h1>
         <p>{this.state.thisMovie.description}</p>
+        <p>{this.state.thisMovie.genre}</p>
         <button onClick={this.goBack}>Back To List</button>
 
         <button onClick={this.editMovie}>Edit</button>
