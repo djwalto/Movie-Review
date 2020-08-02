@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import Swal from 'sweetalert2';
-
+import Container from 'react-bootstrap/Container';
 // this component is the inputs for changing movie title and description
 class EditPage extends Component {
   state = {
@@ -48,38 +48,43 @@ class EditPage extends Component {
   render() {
     return (
       <div className="edit">
-        <h1>Edit Movie</h1>
-        <label>Edit Title</label>
-        <br></br>
-        <input
-          className="input"
-          type="text"
-          onChange={this.onInputChange('title')}
-        ></input>
-        <br></br>
-        <label>Edit Description</label>
-        <br></br>
-        <textarea
-          className="input"
-          onChange={this.onInputChange('description')}
-          id="moviedesc"
-          name="moviedesc"
-          rows="4"
-          cols="50"
-        ></textarea>
-        <br></br>
-        <Button
-          variant="outline-danger"
-          onClick={this.cancelEdit(this.props.match.params.id)}
-        >
-          Cancel
-        </Button>
-        <Button
-          variant="outline-danger"
-          onClick={this.updateMovie(this.props.match.params.id)}
-        >
-          Save
-        </Button>
+        <Container>
+          <br></br>
+          <h1>Edit Your Movie</h1>
+          <br></br>
+          <label>Edit Title</label>
+          <br></br>
+          <input
+            className="input"
+            type="text"
+            onChange={this.onInputChange('title')}
+          ></input>
+          <br></br>
+          <br></br>
+          <label>Edit Description</label>
+          <br></br>
+          <textarea
+            className="input"
+            onChange={this.onInputChange('description')}
+            id="moviedesc"
+            name="moviedesc"
+            rows="4"
+            cols="50"
+          ></textarea>
+          <br></br>
+          <Button
+            variant="outline-danger"
+            onClick={this.cancelEdit(this.props.match.params.id)}
+          >
+            Cancel
+          </Button>
+          <Button
+            variant="outline-danger"
+            onClick={this.updateMovie(this.props.match.params.id)}
+          >
+            Save
+          </Button>
+        </Container>
       </div>
     );
   }
