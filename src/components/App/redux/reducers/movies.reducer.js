@@ -1,3 +1,4 @@
+// movies reducer
 const movies = (state = [], action) => {
   switch (action.type) {
     case 'SET_MOVIES':

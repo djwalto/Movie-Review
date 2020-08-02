@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App/App.js';
 import registerServiceWorker from './registerServiceWorker';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 // Provider allows us to use redux within our react app
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
@@ -15,10 +15,6 @@ import rootSaga from './components/App/redux/sagas/_root.saga';
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
-
-// Used to store movies returned from the server
-
-// Used to store the movie genres
 
 // Create one store that all components can use
 const storeInstance = createStore(
