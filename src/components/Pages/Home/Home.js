@@ -3,10 +3,10 @@ import MoviesList from '../../MoviesList/MoviesList';
 import { connect } from 'react-redux';
 
 class Home extends Component {
+  // pushes history through props to other component
   handleViewClick = (id) => (event) => {
     this.props.history.push(`/details/${id}`);
   };
-
   render() {
     return (
       <div>
@@ -15,6 +15,7 @@ class Home extends Component {
     );
   }
 }
+
 const mapStoreToProps = (store) => ({ store });
 
 export default connect(mapStoreToProps)(Home);

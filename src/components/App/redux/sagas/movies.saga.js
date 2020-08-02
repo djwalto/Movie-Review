@@ -1,6 +1,7 @@
 import { put } from 'redux-saga/effects';
 import axios from 'axios';
 
+// getMovies saga
 function* getMovies(action) {
   try {
     const response = yield axios.get('/api/movie');

@@ -1,3 +1,4 @@
+// genre reducer
 const genres = (state = [], action) => {
   switch (action.type) {
     case 'SET_GENRES':

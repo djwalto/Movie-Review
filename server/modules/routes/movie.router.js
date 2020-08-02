@@ -3,6 +3,7 @@ const pool = require('../pool');
 
 const movieRouter = express.Router();
 
+//  route to get all movies
 movieRouter.get('/', (req, res) => {
   const queryText = 'SELECT * FROM movies';
   pool
@@ -16,6 +17,7 @@ movieRouter.get('/', (req, res) => {
     });
 });
 
+// route to get details page
 movieRouter.get('/details/:id', (req, res) => {
   const queryText = `SELECT movies.id, movies.title, movies.description, movies.poster, array_agg(genres.name) as genres FROM movies
   JOIN movie_type ON movies.id=movie_type.movie_id
@@ -33,6 +35,7 @@ movieRouter.get('/details/:id', (req, res) => {
     });
 });
 
+// route to update id
 movieRouter.put('/success/:id', (req, res) => {
   const queryText = `UPDATE "movies"
     SET "title" = $1, "description" = $2
@@ -41,7 +44,6 @@ movieRouter.put('/success/:id', (req, res) => {
   console.log(movieId);
   const newMovieData = req.body;
   console.log(newMovieData);
-
   pool
     .query(queryText, [newMovieData.title, newMovieData.description, movieId])
     .then((responseDb) => {
@@ -52,18 +54,5 @@ movieRouter.put('/success/:id', (req, res) => {
       res.sendStatus(500);
     });
 });
-
-// movieRouter.delete('/:id', (req, res) => {
-//   const queryText = 'DELETE FROM movies WHERE id=$1';
-//   pool
-//     .query(queryText, [req.params.id])
-//     .then(() => {
-//       res.sendStatus(200);
-//     })
-//     .catch((err) => {
-//       console.log('Error completing DELETE movie', err);
-//       res.sendStatus(500);
-//     });
-// });
 
 module.exports = movieRouter;
