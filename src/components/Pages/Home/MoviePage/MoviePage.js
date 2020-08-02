@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import Button from 'react-bootstrap/Button';
+import './MoviePage.css';
 class MoviePage extends Component {
   state = {
     thisMovie: {
@@ -38,14 +39,18 @@ class MoviePage extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="moviepage">
         <img src={this.state.thisMovie.poster}></img>
         <h1>{this.state.thisMovie.title}</h1>
         <p>{this.state.thisMovie.description}</p>
         <p>{this.state.thisMovie.genre}</p>
-        <button onClick={this.goBack}>Back To List</button>
+        <Button variant="outline-info" onClick={this.goBack}>
+          Back To List
+        </Button>
 
-        <button onClick={this.editMovie}>Edit</button>
+        <Button variant="outline-info" onClick={this.editMovie}>
+          Edit
+        </Button>
       </div>
     );
   }

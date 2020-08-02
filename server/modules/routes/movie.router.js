@@ -33,21 +33,17 @@ movieRouter.get('/details/:id', (req, res) => {
     });
 });
 
-movieRouter.put('/edit/:id', (req, res) => {
+movieRouter.put('/success/:id', (req, res) => {
   const queryText = `UPDATE "movies"
     SET "title" = $1, "description" = $2
     WHERE "id" = $3;`;
   const movieId = req.params.id;
+  console.log(movieId);
   const newMovieData = req.body;
+  console.log(newMovieData);
 
   pool
-    .query(queryText, [
-      // how is title coming to server
-      newMovieData.title,
-      // how to get the description
-      newMovieData.description,
-      movieId,
-    ])
+    .query(queryText, [newMovieData.title, newMovieData.description, movieId])
     .then((responseDb) => {
       res.sendStatus(200);
     })

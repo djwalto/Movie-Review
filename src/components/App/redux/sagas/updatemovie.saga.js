@@ -4,10 +4,13 @@ import { put } from 'redux-saga/effects';
 function* updateMovie(action) {
   try {
     const movieId = action.payload.id;
-    yield axios.put(`/api/movies/edit/${movieId}`, action.payload);
+    yield axios.put(`/api/movie/success/${movieId}`, action.payload);
     yield put({
-      type: 'GET_MOVIE',
-      payload: movieId,
+      type: 'PUT_MOVIE',
+      payload: action.payload,
+    });
+    yield put({
+      type: 'GET_MOVIES',
     });
   } catch (err) {
     console.warn(err);

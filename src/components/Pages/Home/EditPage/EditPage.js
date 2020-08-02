@@ -18,16 +18,22 @@ class EditPage extends Component {
     });
   };
 
-  updateMovie = (event) => {
+  updateMovie = (id) => (event) => {
     let newMovie = {
       ...this.state,
       id: Number(this.props.match.params.id),
     };
-    this.props.dispatch({
-      type: 'PUT_MOVIE',
-      payload: newMovie,
-    });
+    this.props.dispatch(
+      {
+        type: 'UPDATE_MOVIE',
+        payload: newMovie,
+      },
+      () => {
+        this.props.history.push(`/details/${id}`);
+      }
+    );
   };
+
   render() {
     return (
       <div>

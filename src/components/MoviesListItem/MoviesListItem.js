@@ -14,18 +14,16 @@ class MoviesListItem extends Component {
         <Container>
           <Row>
             <Col xs>
-              <CardColumns>
-                <Card className="p-3">
-                  <Card.Img
-                    variant="top"
-                    src={this.props.movie.poster}
-                    onClick={this.props.handleViewClick(this.props.movie.id)}
-                  />
-                  <Card.Body>
-                    <Card.Title>{this.props.movie.title}</Card.Title>
-                  </Card.Body>
-                </Card>
-              </CardColumns>
+              <Card className="p-3">
+                <Card.Img
+                  variant="top"
+                  src={this.props.movie.poster}
+                  onClick={this.props.handleViewClick(this.props.movie.id)}
+                />
+                <Card.Body>
+                  <Card.Title>{this.props.movie.title}</Card.Title>
+                </Card.Body>
+              </Card>
             </Col>
           </Row>
         </Container>
